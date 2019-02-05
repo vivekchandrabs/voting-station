@@ -20,7 +20,7 @@ from polling.views import question, answer, thankyou
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',question),
-    path('answer/<int:questionid>/<int:choiceid>/',answer),
+    path('answer/<int:questionid>/',answer),
     path('thankyou/', thankyou),
 
     

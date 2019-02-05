@@ -13,22 +13,27 @@
 				<h3 style="text-align:center;">{{question.question_text}}</h3>
 				<br>
 				<br>
-				<div style="padding-right:40px;padding-left:40px">
-					{% for  choice in choice_set %}
-						<div class="row">
-							<div class="col-md-6" style="text-align:center">
-								<h6>{{choice.choice_text}}</h6>
+				<form method="POST" action="/answer/{{question.id}}/">
+					{% csrf_token %}
+					<div style="padding-right:40px;padding-left:40px">
+						{% for  choice in choice_set %}
+							<div class="row">
+								<div class="col-md-6" style="text-align:center">
+									<h6>{{choice.choice_text}}</h6>
+								</div>
+								<div class="col-md-6" style="text-align:center">
+									
+									<button class="btn btn-outline-primary" type="submit" style="padding-left:50px;padding-right:50px;" value="{{choice.id}}" name="vote">Vote</button>
+								</div>
+								
 							</div>
-							<div class="col-md-6" style="text-align:center">
-								<a href="/answer/{{question.id}}/{{choice.id}}/" style="padding-left:50px;padding-right:50px;" role="button" class="btn btn-outline-primary">Vote</a>
-							</div>
-							
-						</div>
-						<br><hr><br>
-					{% endfor %}
-				</div>
+							<br><hr><br>
+						{% endfor %}
+					</div>
+				</form>
 				
 			</div>
 		</div>
 	</body>
+	
 </html>

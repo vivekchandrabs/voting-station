@@ -9,9 +9,10 @@ def question(request):
 	choice_set = Choice.objects.filter(question = question)
 	return render(request, "index.html", {'question':question, "choice_set":choice_set})
 
-def answer(request, questionid, choiceid):
+def answer(request, questionid):
 
 	question = Question.objects.get(pk = questionid)
+	choiceid = request.POST.get("vote")
 	choice = Choice.objects.get(pk = choiceid, question=question)
 	choice.votes+=1
 	choice.save()
