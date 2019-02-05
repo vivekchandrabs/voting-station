@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>POLL</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	</head>
+	<body class="container" style="background-color:f7f7f7">
+		<div class="card border border-dark" style="margin-top:50px; background-color:#f8f8f8" >
+			<div class="card-body" style="border-dark:20px;">
+				<h3 style="text-align:center;font-size:40px;" class="text-secondary">POLLING BOOTH</h3>
+				<hr>
+				<br>
+				<h3 style="text-align:center;">{{question.question_text}}</h3>
+				<br>
+				<br>
+				<div style="padding-right:40px;padding-left:40px">
+					{% for  choice in choice_set %}
+						<div class="row">
+							<div class="col-md-6" style="text-align:center">
+								<h6>{{choice.choice_text}}</h6>
+							</div>
+							<div class="col-md-6" style="text-align:center">
+								<a href="/answer/{{question.id}}/{{choice.id}}/" style="padding-left:50px;padding-right:50px;" role="button" class="btn btn-outline-primary">Vote</a>
+							</div>
+							
+						</div>
+						<br><hr><br>
+					{% endfor %}
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>
